@@ -1,0 +1,28 @@
+{
+  "name": "queen_amda",
+  "version": "3.0.2v",
+  "description": "Queen Amda Bot project - a Whatsapp userbot helping to improve your Whatsapp experience.",
+  "main": "./QueenAmda/bot.js",
+  "scripts": {
+    "start": "supervisor -s bot.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dinukahimsara1/QueenAmda.git"
+  },
+  "keywords": [
+    "whatsapp"
+  ],
+  "author": "dinukahimsar1",
+  "developer": "Dinuka",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/dinukahimsara1/QueenAmda/issues"
+  },
+  "homepage": "https://github.com/dinukahimsara1/QueenAmda#readme",
+  "dependencies": {
+    "queenamdi-public-2":"1.0.1",
+    "queenamdi-img": "1.0.0",
+    "queenamdi-textlogo-1.0.3": "1.0.3"
+  }
+}
