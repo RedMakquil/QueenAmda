@@ -26,7 +26,7 @@ const heroku = new Heroku({
 
 let baseURI = '/apps/' + config.HEROKU.APP_NAME;
 
-const QueenAmdiDB = config.DATABASE.define('QueenAmdi', {
+const QueenAmdaDB = config.DATABASE.define('QueenAmdi', {
     info: {
       type: DataTypes.STRING,
       allowNull: false
@@ -67,7 +67,7 @@ Array.prototype.remove = function() {
     return this;
 };
 
-async function queenAmdi () {
+async function queenAmda () {
     await config.DATABASE.sync();
     var StrSes_Db = await QueenAmdiDB.findAll({
         where: {
@@ -82,7 +82,7 @@ QueenAmdiCon.version = [2, 2140, 12]
 setInterval(async () => { 
     var getGMTh = new Date().getHours()
     var getGMTm = new Date().getMinutes()
-        await axios.get('https://gist.githubusercontent.com/BlackAmda/c3877acdcdc041d77907d590d4ac1a2d/raw/').then(async (ann) => {
+        await axios.get('https://gist.githubusercontent.com/dinukahimsaraq/c3877acdcdc041d77907d590d4ac1a2d/raw/').then(async (ann) => {
             const { infoen, infosi} = ann.data.announcements          
             if (infoen !== '' && config.LANG == 'EN' || config.LANG == 'ES') {
                 while (getGMTh == 08 && getGMTm == 00) { 
@@ -100,7 +100,7 @@ setInterval(async () => {
 setInterval(async () => { 
     var getGMTh = new Date().getHours()
     var getGMTm = new Date().getMinutes()
-        await axios.get('https://gist.githubusercontent.com/BlackAmda/c3877acdcdc041d77907d590d4ac1a2d/raw/').then(async (ann) => {
+        await axios.get('https://gist.githubusercontent.com/dinukahimsara1/c3877acdcdc041d77907d590d4ac1a2d/raw/').then(async (ann) => {
             const { infoen, infosi} = ann.data.announcements          
             if (infoen !== '' && config.LANG == 'EN' || config.LANG == 'ES') {
                 while (getGMTh == 18 && getGMTm == 00) { 
@@ -188,15 +188,15 @@ if (/\[(\W*)\]/.test(config.HANDLERS)) {
 // --------------End of verify system coding--------------
 */
 
-// ======================Queen_Amdi_Logger=======================
-QueenAmdiCon.logger.level = config.DEBUG ? 'debug' : 'warn';
+// ======================Queen_Amda_Logger=======================
+QueenAmdaCon.logger.level = config.DEBUG ? 'debug' : 'warn';
 var nodb;
 
     if (StrSes_Db.length < 1) {
         nodb = true;
-        QueenAmdiCon.loadAuthInfo(Session.deCrypt(config.SESSION)); 
+        QueenAmdaCon.loadAuthInfo(Session.deCrypt(config.SESSION)); 
     } else {
-        QueenAmdiCon.loadAuthInfo(Session.deCrypt(StrSes_Db[0].dataValues.value));
+        QueenAmdaCon.loadAuthInfo(Session.deCrypt(StrSes_Db[0].dataValues.value));
     }
 
 if (config.LANG == 'EN' || config.LANG == 'ES') {
@@ -205,22 +205,22 @@ if (config.LANG == 'EN' || config.LANG == 'ES') {
             chalk.blueBright.italic('✅ Login details updated!')
         );
 
-        const authInfo = QueenAmdiCon.base64EncodedAuthInfo();
+        const authInfo = QueenAmdaCon.base64EncodedAuthInfo();
         if (StrSes_Db.length < 1) {
-            await QueenAmdiDB.create({ info: "StringSession", value: Session.createStringSession(authInfo) });
+            await QueenAmdaDB.create({ info: "StringSession", value: Session.createStringSession(authInfo) });
         } else {
             await StrSes_Db[0].update({ value: Session.createStringSession(authInfo) });
         }
     })}
 else if (config.LANG == 'SI') {
-    QueenAmdiCon.on ('credentials-updated', async () => {
+    QueenAmdaCon.on ('credentials-updated', async () => {
         console.log(
             chalk.blueBright.italic('✅ පිවිසුම් තොරතුරු update කරන ලදි!')
         );
 
-        const authInfo = QueenAmdiCon.base64EncodedAuthInfo();
+        const authInfo = QueenAmdaCon.base64EncodedAuthInfo();
         if (StrSes_Db.length < 1) {
-            await QueenAmdiDB.create({ info: "StringSession", value: Session.createStringSession(authInfo) });
+            await QueenAmdaDB.create({ info: "StringSession", value: Session.createStringSession(authInfo) });
         } else {
             await StrSes_Db[0].update({ value: Session.createStringSession(authInfo) });
         }
@@ -228,7 +228,7 @@ else if (config.LANG == 'SI') {
 }
 
 if (config.LANG == 'EN' || config.LANG == 'ES') {
-    QueenAmdiCon.on('connecting', async () => {
+    QueenAmdaCon.on('connecting', async () => {
         console.log(`${chalk.green.bold('Queen')}${chalk.blue.bold('Amdi')}
     ${chalk.white.bold('Version:')} ${chalk.red.bold(config.VERSION)}
 
@@ -236,7 +236,7 @@ if (config.LANG == 'EN' || config.LANG == 'ES') {
         });
 }
 else if (config.LANG == 'SI') {
-    QueenAmdiCon.on('connecting', async () => {
+    QueenAmdaCon.on('connecting', async () => {
         console.log(`${chalk.green.bold('Queen')}${chalk.blue.bold('Amdi')}
     ${chalk.white.bold('Version:')} ${chalk.red.bold(config.VERSION)}
 
