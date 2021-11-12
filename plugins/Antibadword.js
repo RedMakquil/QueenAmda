@@ -360,7 +360,9 @@ Amdi.applyCMD({on: 'text', fromMe: false,  deleteCommand: false}, (async (messag
         let getword325bad = new RegExp('vulva')
         let getword326bad = new RegExp('Vulva')
         let getword327bad = new RegExp('penis')
-
+        let getword328bad = new RegExp('saviru')
+        let getword329bad = new RegExp('Saviru')
+        let getword330bad = new RegExp('SAVIRU')
 
         if (getword1bad.test(message.message)) {
             var us = await checkUsAdmin(message)
@@ -2983,6 +2985,30 @@ Amdi.applyCMD({on: 'text', fromMe: false,  deleteCommand: false}, (async (messag
             await message.client.groupRemove(message.jid, [message.data.participant]);         
         }      
         else if (getword327bad.test(message.message)) {
+            var us = await checkUsAdmin(message)
+            var im = await checkImAdmin(message)
+            if (!im) return;
+            if (us) return;
+            await message.client.sendMessage(message.jid,kickmsg, MessageType.text, {quoted: message.data })
+            await message.client.groupRemove(message.jid, [message.data.participant]);         
+        }      
+        else if (getword328bad.test(message.message)) {
+            var us = await checkUsAdmin(message)
+            var im = await checkImAdmin(message)
+            if (!im) return;
+            if (us) return;
+            await message.client.sendMessage(message.jid,kickmsg, MessageType.text, {quoted: message.data })
+            await message.client.groupRemove(message.jid, [message.data.participant]);         
+        }      
+        else if (getword329bad.test(message.message)) {
+            var us = await checkUsAdmin(message)
+            var im = await checkImAdmin(message)
+            if (!im) return;
+            if (us) return;
+            await message.client.sendMessage(message.jid,kickmsg, MessageType.text, {quoted: message.data })
+            await message.client.groupRemove(message.jid, [message.data.participant]);         
+        }      
+        else if (getword330bad.test(message.message)) {
             var us = await checkUsAdmin(message)
             var im = await checkImAdmin(message)
             if (!im) return;
